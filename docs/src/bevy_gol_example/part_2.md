@@ -276,7 +276,7 @@ which uses wgsl as their default shader language. They also support GLSL, but a 
 To start with our `init` function in our shader, we see some function inputs:
 
 ```glsl
-fn init(@builtin(global_invocation_id) invocation_id: vec3<u32>, @builtin(num_workgroups) num_workgroups: vec3<u32>) 
+fn init(@builtin(global_invocation_id) invocation_id: vec3<u32>, @builtin(num_workgroups) num_workgroups: vec3<u32>)
 ```
 
 This is a builtin value for the current invocation’s global invocation ID, i.e. its position in the compute shader grid. WGSL has many builtin values
@@ -344,4 +344,4 @@ And now the moment of truth, we can run our code and see the results! Running sh
 
 ![Game of life](images/gol_part2.png)
 
-Code can be found on github: [Part 2](https://github.com/bayou-brogrammer/bevy_shader_playground/tree/explore_part2/sims/game_of_life_sim/src)
+Code can be found on github: [Part 2](https://github.com/HexSleeves/bevy_shader_playground/tree/explore_part2/sims/game_of_life_sim/src)

@@ -108,7 +108,7 @@ fn count_neighbors_simple(location: vec2<i32>) -> u32 {
                 continue;
             }
 
-            result += is_alive(location, x, y); 
+            result += is_alive(location, x, y);
         }
     }
     return result;
@@ -134,10 +134,10 @@ It is pretty staight forward from here, we just need to implement the rules from
 
 var result: u32 = 0u;
 
-if (is_alive) { 
-    result = ((u32((num_neighbors) == (2u))) | (u32((num_neighbors) == (3u)))); 
-} else { 
-    result = u32((num_neighbors) == (3u)); 
+if (is_alive) {
+    result = ((u32((num_neighbors) == (2u))) | (u32((num_neighbors) == (3u))));
+} else {
+    result = u32((num_neighbors) == (3u));
 }
 
 let color = vec4<f32>(f32(result), 0.0, 0.0, 1.0);
@@ -154,4 +154,4 @@ Running the app should now show the cells moving around!!! How cool!
 
 ![gol_running](images/gol_running.gif)
 
-Code can be found on github: [Part 3](https://github.com/bayou-brogrammer/bevy_shader_playground/tree/explore_part3/sims/game_of_life_sim/src)
+Code can be found on github: [Part 3](https://github.com/HexSleeves/bevy_shader_playground/tree/explore_part3/sims/game_of_life_sim/src)

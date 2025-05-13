@@ -362,7 +362,7 @@ fn setup(mut commands: Commands, mut images: ResMut<Assets<Image>>, device: Res<
 
     // NEW
     commands.insert_resource(GameOfLifeBuffers {
-        uniform_buffer: uniform_size_buffer, 
+        uniform_buffer: uniform_size_buffer,
     });
 }
 ```
@@ -435,7 +435,7 @@ Finally we can modify our shader to intake this new layout:
 ```glsl
 // game_of_life.wgsl
 
-@group(0) @binding(0) 
+@group(0) @binding(0)
 var<uniform> size : vec2<u32>; // width, height
 @group(0) @binding(1)
 var texture: texture_storage_2d<rgba8unorm, read_write>;
@@ -479,7 +479,7 @@ fn draw(@builtin(global_invocation_id) invocation_id: vec3<u32>)
 }
 ```
 
-Review the [source](https://github.com/bayou-brogrammer/bevy_shader_playground/blob/explore_part5/sims/game_of_life_sim/src/pipeline/draw.rs) for the full implementation.
+Review the [source](https://github.com/HexSleeves/bevy_shader_playground/blob/explore_part5/sims/game_of_life_sim/src/pipeline/draw.rs) for the full implementation.
 
 </details>
 
@@ -781,11 +781,11 @@ now in our `game_of_life.wgsl` lets add the new layout.
 ```glsl
 #import bevy_shader_playground::core
 
-@group(0) @binding(0) 
+@group(0) @binding(0)
 var<uniform> size : vec2<u32>; // width, height
-@group(0) @binding(1) 
+@group(0) @binding(1)
 var<storage, read_write> aliveSrc : array<Cell>;
-@group(0) @binding(2) 
+@group(0) @binding(2)
 var<storage, read_write> aliveDts : array<Cell>;
 @group(0) @binding(3)
 var texture: texture_storage_2d<rgba8unorm, read_write>;
@@ -835,10 +835,10 @@ fn update(@builtin(global_invocation_id) invocation_id: vec3<u32>) {
     var result: u32 = 0u;
     var heat: u32 = cell.heat; // NEW!!
 
-    if (is_alive) { 
-        result = ((u32((num_neighbors) == (2u))) | (u32((num_neighbors) == (3u)))); 
-    } else { 
-        result = u32((num_neighbors) == (3u)); 
+    if (is_alive) {
+        result = ((u32((num_neighbors) == (2u))) | (u32((num_neighbors) == (3u))));
+    } else {
+        result = u32((num_neighbors) == (3u));
     }
 
     var color: vec4<f32> = vec4<f32>(f32(result), 0., 0., 1.);
@@ -1106,9 +1106,9 @@ draw.wgsl
 ```glsl
 #import bevy_shader_playground::core
 
-@group(0) @binding(0) 
+@group(0) @binding(0)
 var<uniform> size : vec2<u32>; // width, height
-@group(0) @binding(1) 
+@group(0) @binding(1)
 var<storage, read_write> aliveDts : array<Cell>;
 
 // Line v->w, point p
@@ -1174,7 +1174,7 @@ fn draw(@builtin(global_invocation_id) invocation_id: vec3<u32>)
 
 </details>
 
-Challenge 2 along with the full source code can be found on github: [Part 5](https://github.com/bayou-brogrammer/bevy_shader_playground/tree/explore_part5/sims/game_of_life_sim/src)
+Challenge 2 along with the full source code can be found on github: [Part 5](https://github.com/HexSleeves/bevy_shader_playground/tree/explore_part5/sims/game_of_life_sim/src)
 
 [egui]: https://github.com/emilk/egui
 [bevy_egui]: https://github.com/mvlabat/bevy_egui
